@@ -1,0 +1,53 @@
+# Laravel & PHP
+backup
+/vendor/
+.env
+.env.backup
+.env.*
+.phpunit.result.cache
+Homestead.yaml
+Homestead.json
+.phpstorm.meta.php
+.idea/
+.vscode/
+composer.lock
+/node_modules/
+
+/public/storage
+/storage/*.key
+/storage/app/public
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+bootstrap/cache/*.php
+
+livewire-tmp/
+public/livewire-tmp/
+
+# NPM / Frontend Build
+/public/build
+/public/hot
+/public/mix-manifest.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS Specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor configs
+/.idea
+/.vscode
+*.sublime-workspace
+*.sublime-project
+
+# Backup & temporary files
+*.bak
+*.tmp
+*.swp
+*.orig
+*.log

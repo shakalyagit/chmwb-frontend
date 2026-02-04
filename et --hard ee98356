@@ -1,0 +1,40 @@
+*   [33m2e2a3dc[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m Fixed Conflict
+[31m|[m[32m\[m  
+[31m|[m * [33mec273e9[m Update
+[31m|[m *   [33m6706a01[m Update
+[31m|[m [33m|[m[34m\[m  
+[31m|[m [33m|[m * [33m2e0fefd[m fix: validations fixed
+* [33m|[m [34m|[m [33mf211c98[m Update
+* [33m|[m [34m|[m   [33m883eb9e[m Update
+[33m|[m[36m\[m [33m\[m [34m\[m  
+[33m|[m [36m|[m[33m/[m [34m/[m  
+[33m|[m[33m/[m[36m|[m [34m|[m   
+[33m|[m * [34m|[m [33m7531011[m Update
+[33m|[m * [34m|[m [33m729ea06[m Update
+* [36m|[m [34m|[m [33me9cd406[m[33m ([m[1;31morigin/kazi[m[33m, [m[1;32mkazi[m[33m)[m Update
+[36m|[m[36m/[m [34m/[m  
+* [34m|[m [33m55fd6dd[m Update
+* [34m|[m [33mee98356[m Update:: Frontend Changes Update
+* [34m|[m [33ma50a70f[m Update
+* [34m|[m [33md63a36d[m Update
+* [34m|[m [33m0f33c70[m Update
+* [34m|[m [33m28f02a9[m Update
+* [34m|[m [33m835201a[m Update Form Data..
+* [34m|[m [33mc60ce0f[m Update Form Data..
+* [34m|[m [33m079c1bc[m Update Form Data..
+* [34m|[m [33m139532c[m Merge branch 'dev'
+[1;31m|[m[34m\[m[34m|[m 
+[1;31m|[m * [33m8508b00[m Update form Submit.
+[1;31m|[m * [33maae4d2b[m fix: downgraded to pho 8.1.25
+[1;31m|[m * [33mede2b7b[m converted to laravel
+* [33m83f408d[m Update v2
+* [33me119471[m Update
+*   [33mecd3d77[m Merge branch 'dev'
+[1;33m|[m[1;34m\[m  
+[1;33m|[m * [33m2638a9e[m[33m ([m[1;32mdev_old[m[33m)[m revisions given
+* [1;34m|[m [33md3515f2[m Merge branch 'dev'
+[1;35m|[m[1;34m\[m[1;34m|[m 
+[1;35m|[m * [33m80f7500[m revision
+* [1;36m|[m [33me3d2401[m Merge branch 'dev'
+[31m|[m[1;36m\[m[1;36m|[m 
+[31m|[m * [33m3197268[m fix: checkboxes disables

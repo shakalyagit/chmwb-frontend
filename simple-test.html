@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Checkbox Test</title>
+    <style>
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d5db;
+            transition: all 0.2s;
+            margin: 8px 0;
+        }
+        .checkbox-item:hover {
+            border-color: #93c5fd;
+            background-color: #eff6ff;
+        }
+        .checkbox-item.disabled {
+            opacity: 0.5 !important;
+            cursor: not-allowed !important;
+            background-color: #f3f4f6 !important;
+            border-color: #d1d5db !important;
+            pointer-events: none !important;
+        }
+        .checkbox-item.disabled span {
+            color: #9ca3af !important;
+        }
+        .test-button {
+            padding: 8px 16px;
+            margin: 8px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Checkbox Disable Test</h1>
+    
+    <button class="test-button" onclick="disableCheckbox()">Disable Checkbox</button>
+    <button class="test-button" onclick="enableCheckbox()">Enable Checkbox</button>
+    
+    <div>
+        <label class="checkbox-item" id="test-checkbox-item">
+            <input type="checkbox" id="test-checkbox">
+            <span>Test Checkbox</span>
+        </label>
+    </div>
+
+    <script>
+        function disableCheckbox() {
+            const checkbox = document.getElementById('test-checkbox');
+            const checkboxItem = document.getElementById('test-checkbox-item');
+            
+            checkbox.disabled = true;
+            checkboxItem.classList.add('disabled');
+            
+            console.log('Disabled checkbox. Classes:', checkboxItem.classList.toString());
+        }
+        
+        function enableCheckbox() {
+            const checkbox = document.getElementById('test-checkbox');
+            const checkboxItem = document.getElementById('test-checkbox-item');
+            
+            checkbox.disabled = false;
+            checkboxItem.classList.remove('disabled');
+            
+            console.log('Enabled checkbox. Classes:', checkboxItem.classList.toString());
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .checkbox-item {
+            @apply flex items-start space-x-3 p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200;
+        }
+        .checkbox-item.checked {
+            @apply border-blue-500 bg-blue-50;
+        }
+        .checkbox-item.disabled {
+            @apply opacity-50 cursor-not-allowed bg-gray-100 border-gray-200;
+            pointer-events: none;
+        }
+        .checkbox-item.disabled:hover {
+            @apply border-gray-200 bg-gray-100 transform-none;
+        }
+        .checkbox-item.disabled input[type="checkbox"] {
+            @apply cursor-not-allowed opacity-50;
+        }
+        .checkbox-item.disabled span {
+            @apply text-gray-400;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <h1 class="text-2xl font-bold mb-6">Checkbox Disable Test</h1>
+    
+    <div class="space-y-4">
+        <h2 class="text-lg font-semibold">Group 1 (Multiple Selection)</h2>
+        <div id="group1" class="space-y-2">
+            <label for="change-surname" class="checkbox-item cursor-pointer">
+                <input type="checkbox" id="change-surname" class="w-5 h-5 text-blue-600 border-2 border-gray-300 rounded"/>
+                <span class="font-medium text-gray-900">Change of Surname</span>
+            </label>
+            <label for="change-address" class="checkbox-item cursor-pointer">
+                <input type="checkbox" id="change-address" class="w-5 h-5 text-blue-600 border-2 border-gray-300 rounded"/>
+                <span class="font-medium text-gray-900">Change of Address</span>
+            </label>
+        </div>
+        
+        <h2 class="text-lg font-semibold mt-6">Group 2 (Single Selection)</h2>
+        <div id="group2" class="space-y-2">
+            <label for="doctor-id" class="checkbox-item cursor-pointer">
+                <input type="checkbox" id="doctor-id" class="w-5 h-5 text-blue-600 border-2 border-gray-300 rounded"/>
+                <span class="font-medium text-gray-900">Request for Doctor's Identity Card</span>
+            </label>
+            <label for="provisional-reg" class="checkbox-item cursor-pointer">
+                <input type="checkbox" id="provisional-reg" class="w-5 h-5 text-blue-600 border-2 border-gray-300 rounded"/>
+                <span class="font-medium text-gray-900">Application for Provisional Registration</span>
+            </label>
+            <label for="cancel-reg" class="checkbox-item cursor-pointer">
+                <input type="checkbox" id="cancel-reg" class="w-5 h-5 text-blue-600 border-2 border-gray-300 rounded"/>
+                <span class="font-medium text-gray-900">Cancellation of Registration</span>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        // Test the disable functionality
+        function toggleGroup2Checkboxes(disable) {
+            const group2 = ["cancel-reg", "doctor-id", "provisional-reg"];
+            
+            group2.forEach(id => {
+                const checkbox = document.getElementById(id);
+                const checkboxItem = checkbox ? checkbox.closest(".checkbox-item") : null;
+                
+                if (checkbox && checkboxItem) {
+                    checkbox.disabled = disable;
+                    
+                    if (disable) {
+                        if (checkbox.checked) {
+                            checkbox.checked = false;
+                            checkboxItem.classList.remove("checked");
+                        }
+                        checkboxItem.classList.add("disabled");
+                        console.log(`Disabled checkbox: ${id}`);
+                    } else {
+                        checkboxItem.classList.remove("disabled");
+                        console.log(`Enabled checkbox: ${id}`);
+                    }
+                }
+            });
+        }
+
+        function toggleOtherGroup2Checkboxes(selectedId, disable) {
+            const group2 = ["cancel-reg", "doctor-id", "provisional-reg"];
+            
+            group2.forEach(id => {
+                if (id !== selectedId) {
+                    const checkbox = document.getElementById(id);
+                    const checkboxItem = checkbox ? checkbox.closest(".checkbox-item") : null;
+                    
+                    if (checkbox && checkboxItem) {
+                        checkbox.disabled = disable;
+                        
+                        if (disable) {
+                            if (checkbox.checked) {
+                                checkbox.checked = false;
+                                checkboxItem.classList.remove("checked");
+                            }
+                            checkboxItem.classList.add("disabled");
+                            console.log(`Disabled other checkbox: ${id}`);
+                        } else {
+                            checkboxItem.classList.remove("disabled");
+                            console.log(`Enabled other checkbox: ${id}`);
+                        }
+                    }
+                }
+            });
+        }
+
+        // Add event listeners
+        document.addEventListener('change', (e) => {
+            if (e.target.type === 'checkbox') {
+                const checkboxId = e.target.id;
+                const checkboxItem = e.target.closest('.checkbox-item');
+                
+                const group1 = ["change-surname", "change-address"];
+                const group2 = ["cancel-reg", "doctor-id", "provisional-reg"];
+                
+                if (e.target.checked) {
+                    if (group1.includes(checkboxId)) {
+                        // Group 1 selected - disable Group 2
+                        toggleGroup2Checkboxes(true);
+                    } else if (group2.includes(checkboxId)) {
+                        // Group 2 selected - disable other Group 2
+                        toggleOtherGroup2Checkboxes(checkboxId, true);
+                    }
+                } else {
+                    if (group2.includes(checkboxId)) {
+                        // Group 2 unchecked - enable other Group 2
+                        toggleOtherGroup2Checkboxes(checkboxId, false);
+                    }
+                }
+                
+                // Update visual state
+                checkboxItem.classList.toggle("checked", e.target.checked);
+                
+                // Check if any Group 1 checkboxes are still selected
+                const anyGroup1Selected = group1.some(id => {
+                    const checkbox = document.getElementById(id);
+                    return checkbox && checkbox.checked;
+                });
+                
+                // If no Group 1 checkboxes are selected, re-enable Group 2
+                if (!anyGroup1Selected) {
+                    toggleGroup2Checkboxes(false);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
