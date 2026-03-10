@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="w-full p-2 sm:p-4 lg:p-6">
-    <div class="bg-white rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 w-full">
+    <div class="bg-white rounded-lg sm:rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 w-full min-h-[800px]">
         <!-- Header -->
         <div class="text-center mb-8 sm:mb-12">
             <div class="w-full flex justify-center mb-4 sm:mb-6">
@@ -12,41 +12,47 @@
             <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2 sm:mb-4 px-2">
                 Council of Homoeopathic Medicine, West Bengal
             </h1>
-            <p class="text-base sm:text-lg font-semibold text-blue-600 mb-4 sm:mb-6">
-                Doctor's & Student's Application Portal
-            </p>
+            <div
+                class="bg-yellow-50 border-2 border-yellow-200 rounded-lg sm:rounded-xl p-4 sm:p-6 max-w-full sm:max-w-3xl mx-auto mt-3 bg-warning-subtle">
+                <p class="text-sm sm:text-base text-red-800 leading-relaxed">
+                    Work on this site is currently in progress. For any queries, please contact or visit the Council of Homoeopathic Medicine, West Bengal.
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-auto mt-8">
-        <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">
-            Search Physician
-        </h2>
-        <form id="physicianSearchForm">
-            <div class="flex justify-center gap-6 mb-5">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="search_type" value="reg_no" checked class="text-blue-600">
-                    <span class="text-gray-700 font-medium">Registration No</span>
-                </label>
-
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <input type="radio" name="search_type" value="name" class="text-blue-600">
-                    <span class="text-gray-700 font-medium">Name</span>
-                </label>
+        <div class="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-auto mt-8 form-section space-y-6 sm:space-y-8">
+            <div
+                class="bg-blue-50 border-2 border-blue-200 rounded-lg sm:rounded-xl sm:p-3 max-w-full sm:max-w-3xl mx-auto bg-warning-subtle">
+                <p class="text-sm sm:text-base text-gray-800 text-center">
+                    <strong>Search Physician</strong>
+                </p>
             </div>
-
-            <div class="flex flex-col sm:flex-row gap-3">
-                <input type="text"
-                    name="search_value"
-                    required
-                    class="w-full border border-gray-300 rounded-lg px-4 py-2">
-
-                <button type="submit"
-                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg">
-                    Search
-                </button>
-            </div>
-        </form>
-        <div id="searchResult" class="mt-6"></div>
+            <form id="physicianSearchForm">
+                <div class="flex justify-center gap-6 mb-5">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="search_type" value="reg_no" checked class="text-blue-600">
+                        <span class="text-gray-700 font-medium">Registration No</span>
+                    </label>
+    
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="search_type" value="name" class="text-blue-600">
+                        <span class="text-gray-700 font-medium">Name</span>
+                    </label>
+                </div>
+    
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text"
+                        name="search_value"
+                        required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2">
+    
+                    <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2 rounded-lg">
+                        Search
+                    </button>
+                </div>
+            </form>
+            <div id="searchResult" class="mt-6"></div>
+        </div>
     </div>
 </div>
 @endsection
