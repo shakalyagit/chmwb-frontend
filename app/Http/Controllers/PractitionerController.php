@@ -92,7 +92,7 @@ class PractitionerController extends Controller
                 <div class="w-full border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition bg-white">
 
                     <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-semibold text-gray-900">'.$doctor->name.'</h3>
+                        <h3 class="text-xl font-semibold text-gray-900">' . $doctor->name . '</h3>
                     </div>
 
                     <hr class="mb-4">
@@ -103,49 +103,49 @@ class PractitionerController extends Controller
                             <tr class="border-b">
                                 <th class="text-left px-3 py-2 w-1/3 border-r bg-gray-50">Registration No</th>
                                 <td class="px-2 py-2 border-r w-5">:</td>
-                                <td class="px-3 py-2">'.$doctor->registration_no.'</td>
+                                <td class="px-3 py-2">' . $doctor->registration_no . '</td>
                             </tr>
 
                             <tr class="border-b">
                                 <th class="text-left px-3 py-2 border-r bg-gray-50">Registration Date</th>
                                 <td class="px-2 py-2 border-r">:</td>
-                                <td class="px-3 py-2">'.date('d-m-Y',strtotime($doctor->registration_date)).'</td>
+                                <td class="px-3 py-2">' . date('d-m-Y', strtotime($doctor->registration_date)) . '</td>
                             </tr>
 
                             <tr class="border-b">
                                 <th class="text-left px-3 py-2 border-r bg-gray-50">Fathers Name</th>
                                 <td class="px-2 py-2 border-r">:</td>
-                                <td class="px-3 py-2">'.(!empty($doctor->fathers_name) ? $doctor->fathers_name : 'N/A').'</td>
+                                <td class="px-3 py-2">' . (!empty($doctor->fathers_name) ? $doctor->fathers_name : 'N/A') . '</td>
                             </tr>
 
                             <tr class="border-b">
                                 <th class="text-left px-3 py-2 border-r bg-gray-50">Qualification</th>
                                 <td class="px-2 py-2 border-r">:</td>
-                                <td class="px-3 py-2">'.(!empty($doctor->qualification) ? $doctor->qualification : 'N/A').'</td>
+                                <td class="px-3 py-2">' . (!empty($doctor->qualification) ? $doctor->qualification : 'N/A') . '</td>
                             </tr>
 
                             <tr class="border-b">
                                 <th class="text-left px-3 py-2 border-r bg-gray-50">Address</th>
                                 <td class="px-2 py-2 border-r">:</td>
-                                <td class="px-3 py-2">'.(!empty($doctor->address) ? $doctor->address : 'N/A').'</td>
+                                <td class="px-3 py-2">' . (!empty($doctor->address) ? $doctor->address : 'N/A') . '</td>
                             </tr>
 
                             <tr class="border-b">
                                 <th class="text-left px-3 py-2 border-r bg-gray-50">State</th>
                                 <td class="px-2 py-2 border-r">:</td>
-                                <td class="px-3 py-2">'.(!empty($doctor->state) ? $doctor->state : 'N/A').'</td>
+                                <td class="px-3 py-2">' . (!empty($doctor->state) ? $doctor->state : 'N/A') . '</td>
                             </tr>
 
                             <tr class="border-b">
                                 <th class="text-left px-3 py-2 border-r bg-gray-50">District</th>
                                 <td class="px-2 py-2 border-r">:</td>
-                                <td class="px-3 py-2">'.(!empty($doctor->district) ? $doctor->district : 'N/A').'</td>
+                                <td class="px-3 py-2">' . (!empty($doctor->district) ? $doctor->district : 'N/A') . '</td>
                             </tr>
 
                             <tr>
                                 <th class="text-left px-3 py-2 border-r bg-gray-50">Pincode</th>
                                 <td class="px-2 py-2 border-r">:</td>
-                                <td class="px-3 py-2">'.(!empty($doctor->pincode) ? $doctor->pincode : 'N/A').'</td>
+                                <td class="px-3 py-2">' . (!empty($doctor->pincode) ? $doctor->pincode : 'N/A') . '</td>
                             </tr>
 
                         </table>
@@ -179,7 +179,12 @@ class PractitionerController extends Controller
 
         $practitioners = $query->get();
 
-        $pdf = Pdf::loadView('pdf.physician', compact('practitioners'));
+        $pdf = Pdf::loadView('pdf.physician', compact('practitioners'))->setPaper('a4')
+            ->setOption([
+                'isRemoteEnabled' => true,
+                'isHtml5ParserEnabled' => true,
+                'chroot' => public_path(),
+            ]);;
 
         return $pdf->download('physician-search-result.pdf');
     }
