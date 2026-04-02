@@ -17,7 +17,7 @@
 
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LexgggsAAAAAHAhuGvkV6GcBjylkdef4gzCb9MU"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.site_key') }}"></script>
     @livewireStyles
 </head>
 
@@ -25,6 +25,8 @@
     @yield('content')
 
     @livewireScripts
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    @stack('scripts')
 </body>
 
 </html>
