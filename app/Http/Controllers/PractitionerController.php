@@ -51,10 +51,12 @@ class PractitionerController extends Controller
 
         if ($request->search_type == 'reg_no') {
             $query->where('registration_no', $request->search_value);
+            $query->where('status', 'Active');
         }
 
         if ($request->search_type == 'name') {
             $query->where('name', $request->search_value);
+            $query->where('status', 'Active');
         }
 
         $practitioners = $query->get();
