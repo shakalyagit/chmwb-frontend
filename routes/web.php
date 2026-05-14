@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\PharmacistsController;
 use App\Http\Controllers\PractitionerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThankYouController;
@@ -11,6 +12,11 @@ Route::get('/', function () {
 
 Route::get('/search-physician', [PractitionerController::class, 'search_physician'])->name('search_physician');
 Route::post('/search-physician-action', [PractitionerController::class, 'search_physician_action'])->name('search_physician_action');
+
+Route::get('/search-pharmacist', [PharmacistsController::class, 'search_pharmacist'])->name('search_pharmacist');
+Route::post('/search-pharmacist-action', [PharmacistsController::class, 'search_pharmacist_action'])->name('search_pharmacist_action');
+Route::get('/download-pharmacist-pdf', [PharmacistsController::class, 'download_pharmacist_pdf'])->name('download_pharmacist_pdf');
+
 Route::get('/download-physician-pdf', [PractitionerController::class, 'download_physician_pdf'])->name('download_physician_pdf');
 Route::get('/notice-board', [NoticeController::class, 'notice_board'])->name('notice_board');
 Route::post('/notice-board/filter', [NoticeController::class, 'filter'])->name('notice.filter');
