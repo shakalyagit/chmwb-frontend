@@ -23,7 +23,7 @@
             <div
                 class="bg-blue-50 border-2 border-blue-200 rounded-lg sm:rounded-xl sm:p-3 max-w-full sm:max-w-3xl mx-auto bg-warning-subtle">
                 <p class="text-sm sm:text-base text-gray-800 text-center">
-                    <strong>Search Pharmacist</strong>
+                    <strong>Search Registered Homoeopathic Pharmacist</strong>
                 </p>
             </div>
             <form id="pharmacistSearchForm">
